@@ -1,0 +1,36 @@
+services:
+  db:
+    image: mariadb:${MARIADB_VERSION}
+    restart: always
+    container_name: ${APP_NAME}-mariadb
+    environment:
+          MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+          MYSQL_DATABASE: ${MYSQL_DATABASE}
+          MYSQL_USER: ${MYSQL_USER}
+          MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - ${MARIADB_DATA_DIR}:/var/lib/mysql
+      - ${MARIADB_ETC_DIR}:/etc/mysql
+      - ${MARIADB_CONF_DIR}:/etc/mysql/conf.d
+    ports:
+      - ${MYSQL_PORT:-3306}:3306
+    networks:
+      -   cloud-network
+
+  app:
+    image: nextcloud:latest
+    restart: always
+    container_name: ${APP_NAME}-nextcloud
+    ports:
+      - ${APP_PORT:-8080}:80
+    volumes:
+      - ${NEXT_HTDOCS}:/var/www/html
+      - ${NEXT_DATA}:/var/www/html/data
+    networks:
+      -   cloud-network
+    depends_on:
+    - db
+
+networks:
+  cloud-network:
+    driver: bridge
