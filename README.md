@@ -9,7 +9,7 @@ Dieses Repository enthält eine vorkonfigurierte Docker-Umgebung für ein Setup 
 1. **Repository klonen:**
 
    ```bash
-   git clone https://github.com/dein-benutzername/pnoom-docker.git
+   git clone git@github.com:juergenarne/nextcloud-docker-blueprint.git
    cd pnoom-docker
    ```
 
