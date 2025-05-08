@@ -25,6 +25,15 @@ Dieses Repository enthält eine vorkonfigurierte Docker-Umgebung für ein Setup 
 
 3. **Container starten:**
 
+Bei der Neuinstallation der Cloud empfiehlt es sich, den Bereich ``volumes:``im Service ``app:`` vollständig auszukommentieren. Dann legt Nextcloud eine komplett neue, leere Cloud an. Nachdem das abgeschlossen ist, empfiehlt es sich, das Verzeichnis ``/var/www/html`` nach ``nextcloud`` zu kopieren. 
+
+```bash
+docker cp pnoom-nextcloud:/var/www/html ./nextcloud/htdocs
+docker cp pnoom-nextcloud:/var/www/html/data ./nextcloud/data
+```
+
+Anschlissend die volumes wieder einkommentieren und 
+
    ```bash
    docker-compose up -d
    ```
@@ -89,3 +98,11 @@ docker-compose down -v
 
 * Stelle sicher, dass deine Ports (`3306`, `8080`) nicht bereits verwendet werden.
 * Achte auf ausreichende Berechtigungen im `nextcloud/data`-Verzeichnis (z. B. `www-data`).
+
+Nach der INstallation:
+
+```bash
+docker exec -u www-data -it pnoom-nextcloud php occ maintenance:repair
+docker exec -u www-data -it pnoom-nextcloud php occ upgrade
+docker exec -u www-data -it pnoom-nextcloud php occ maintenance:mode --off
+```
