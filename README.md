@@ -1,4 +1,4 @@
-# 📦 Pnoom Docker Setup
+# 📦 Nextcloud Docker Setup
 
 Dieses Repository enthält eine vorkonfigurierte Docker-Umgebung für ein Setup mit **Nextcloud** und **MariaDB**, basierend auf einem flexiblen `.env`-System.
 
