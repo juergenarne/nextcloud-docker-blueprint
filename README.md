@@ -67,7 +67,11 @@ Alle Einstellungen werden über die `.env`-Datei vorgenommen:
 
 ```bash
 .
+├── README.md
 ├── docker-compose.yml
+├── docker-up.sh
+├── nextcloud-log-clear.sh
+├── update-nextcloud.sh
 ├── .env
 ├── .env.example
 ├── .dockerignore
@@ -76,6 +80,7 @@ Alle Einstellungen werden über die `.env`-Datei vorgenommen:
 ├── nextcloud/
 │   ├── data/
 │   └── htdocs/
+├── ws-relay/
 ```
 
 ---
