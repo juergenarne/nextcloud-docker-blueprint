@@ -25,18 +25,20 @@ Dieses Repository enthält eine vorkonfigurierte Docker-Umgebung für ein Setup 
 
 3. **Container starten:**
 
-Bei der Neuinstallation der Cloud empfiehlt es sich, den Bereich ``volumes:``im Service ``app:`` vollständig auszukommentieren. Dann legt Nextcloud eine komplett neue, leere Cloud an. Nachdem das abgeschlossen ist, empfiehlt es sich, das Verzeichnis ``/var/www/html`` nach ``nextcloud`` zu kopieren. 
-
+Bei der Neuinstallation der Cloud empfiehlt es sich, die gemounteten Verzeichnisse vor dem erten start der App anzulegen 
 ```bash
-docker cp pnoom-nextcloud:/var/www/html ./nextcloud/htdocs
-docker cp pnoom-nextcloud:/var/www/html/data ./nextcloud/data
+mkdir -p nextcloud/config
+mkdir -p nextcloud/custom_apps
+mkdir -p nextcloud/data
+mkdir -p nextcloud/themes
 ```
 
-Anschlissend die volumes wieder einkommentieren und 
+(Siehe mounts in der app section der docker-compose.yaml Datei)
+Wenn die Verzeichnisse existieren, können die Container hochgefahren werden.
 
-   ```bash
-   docker-compose up -d
-   ```
+```bash
+docker-compose up -d
+```
 
 4. **Zugreifen:**
 
@@ -52,7 +54,9 @@ Alle Einstellungen werden über die `.env`-Datei vorgenommen:
 | `APP_NAME`                             | Name des Projekts (z. B. `pnoom`) |
 | `MARIADB_VERSION`                      | MariaDB-Image-Version             |
 | `MYSQL_*`                              | Datenbank-Zugangsdaten            |
-| `NEXT_SRC`, `NEXT_HTDOCS`, `NEXT_DATA` | Speicherpfade für Nextcloud       |
+| `NEXT_SRC`, `NEXT_CONFIG`,              |                                  |
+| `NEXT_CUSTOM_APPS`, `NEXT_DATA`         |                                  |
+| `NEXT_THEMES`                           | Speicherpfade für Nextcloud      |
 
 ---
 
