@@ -1,11 +1,12 @@
 #!/bin/bash
-docker compose down --remove-orphans
-docker pull nextcloud:production-apache
-docker compose up -d --build
-sleep 10
-# docker exec -u www-data pnoom-nextcloud php occ maintenance:mode --on
-docker exec -u www-data pnoom-nextcloud php occ upgrade
-docker exec -u www-data pnoom-nextcloud php occ maintenance:repair --include-expensive
-docker exec -u www-data pnoom-nextcloud php occ db:add-missing-indices
-# docker exec -u www-data pnoom-nextcloud php occ maintenance:mode --off
-docker exec -u www-data pnoom-nextcloud php occ status
+set -e
+
+docker compose pull app
+docker compose up -d --force-recreate app
+
+docker compose exec -u www-data app php occ upgrade
+docker compose exec -u www-data app php occ maintenance:repair --include-expensive
+docker compose exec -u www-data app php occ db:add-missing-indices
+docker compose exec -u www-data app php occ db:add-missing-columns
+docker compose exec -u www-data app php occ db:add-missing-primary-keys
+docker compose exec -u www-data app php occ status
