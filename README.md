@@ -51,7 +51,7 @@ Alle Einstellungen werden über die `.env`-Datei vorgenommen:
 
 | Variable                               | Beschreibung                      |
 | -------------------------------------- | --------------------------------- |
-| `APP_NAME`                             | Name des Projekts (z. B. `pnoom`) |
+| `APP_NAME`                             | Name des Projekts (z. B. `cloud`) |
 | `MARIADB_VERSION`                      | MariaDB-Image-Version             |
 | `MYSQL_*`                              | Datenbank-Zugangsdaten            |
 | `NEXT_SRC`, `NEXT_CONFIG`,              |                                  |
