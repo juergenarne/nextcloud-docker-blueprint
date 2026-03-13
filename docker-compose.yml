@@ -27,7 +27,7 @@ services:
       - cloud-network
 
   app:
-    image: nextcloud:production-apache
+    image: nextcloud:33-apache
     restart: always
     container_name: ${APP_NAME}-nextcloud
     depends_on:
