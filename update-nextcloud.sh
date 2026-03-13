@@ -1,6 +1,6 @@
 #!/bin/bash
-docker compose down -v --remove-orphans
-docker pull nextcloud:latest
+docker compose down --remove-orphans
+docker pull nextcloud:production-apache
 docker compose up -d --build
 sleep 10
 # docker exec -u www-data pnoom-nextcloud php occ maintenance:mode --on
