@@ -18,7 +18,7 @@ services:
       -   cloud-network
 
   app:
-  image: nextcloud:33-apache
+  image: nextcloud:production-apache
   restart: always
   container_name: ${APP_NAME}-nextcloud
   ports:
