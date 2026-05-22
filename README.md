@@ -108,7 +108,7 @@ docker-compose down -v
 * Stelle sicher, dass deine Ports (`3306`, `8080`) nicht bereits verwendet werden.
 * Achte auf ausreichende Berechtigungen im `nextcloud/data`-Verzeichnis (z. B. `www-data`).
 
-Nach der INstallation:
+Nach der Installation:
 
 ```bash
 docker exec -u www-data -it pnoom-nextcloud php occ maintenance:repair
