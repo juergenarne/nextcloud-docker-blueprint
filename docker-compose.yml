@@ -28,6 +28,7 @@ services:
 
   app:
     image: nextcloud:33-apache
+    mem_limit: 3g
     restart: always
     container_name: ${APP_NAME}-nextcloud
     depends_on:
