@@ -1,3 +1,4 @@
+cat docker-compose.yml 
 services:
   db:
     image: mariadb:${MARIADB_VERSION}
@@ -27,7 +28,7 @@ services:
       - cloud-network
 
   app:
-    image: nextcloud:33-apache
+    image: nextcloud:latest
     mem_limit: 3g
     restart: always
     container_name: ${APP_NAME}-nextcloud
@@ -49,6 +50,9 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       REDIS_HOST: redis
+
+      PHP_OPCACHE_MEMORY_CONSUMPTION: 256
+
     networks:
       - cloud-network
 
@@ -64,3 +68,4 @@ services:
 networks:
   cloud-network:
     driver: bridge
+
