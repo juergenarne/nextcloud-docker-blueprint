@@ -1,4 +1,3 @@
-cat docker-compose.yml 
 services:
   db:
     image: mariadb:${MARIADB_VERSION}
